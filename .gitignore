@@ -1,0 +1,12 @@
+*__pycache__
+*.ipynb_checkpoints
+data/raw_data/LearnPlatform
+data/raw_data/BroadbandNow
+data/alignment_data/edge_locales
+data/alignment_data/edge_locations
+data/alignment_data/zip_codes
+data/alignment_data/states
+data/alignment_data/census_tracts
+data/alignment_data/census_data
+data/alignment_data/_temp/_temp_state*
+data/README_old.md
