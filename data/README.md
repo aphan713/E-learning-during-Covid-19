@@ -26,6 +26,7 @@ Instead, we will estimate the district-level values of any new data by computing
 
 Weights are currently available for (see ```\alignment_data\_temp```):
 - ZIP codes
+- States
 
 (i.e., if you have data with ZIP code or state identifiers, the data loader in ```\dataset.py``` will be able to align it to the rest of the data)
 
@@ -33,6 +34,8 @@ Currently we are just computing crosswalk weights based on area, but we have the
 
 Also, it is worth noting that NCES actually classifies districts to a locale type according to the locale type that the enrollment-weighted _majority_ (or plurality, if no majority exists) of schools are located in within the district ([see section 4.4](https://files.eric.ed.gov/fulltext/ED577162.pdf)). It is therefore possible that a large number of students might actually live in different locales, even in the same district. 
 Ideally each district could be weighted by how urban vs. rural it is, but in the absence of de-anonymized data, it is probably not possible to do this.
+
+See https://fpeckert.me/eglp.pdf for additional information on geographic crosswalks.
 
 ### Re-computing Alignment Data
 
@@ -58,11 +61,11 @@ Download directly from [here](https://www2.census.gov/geo/tiger/TIGER2022/ZCTA52
 
 Download directly from [here](https://www2.census.gov/geo/tiger/TIGER2022/STATE/tl_2022_us_state.zip) and drag all data from the zip into ```\alignment_data\states```
 
-#### Census Tract Area Data
+##### Census Tract Area Data
 
 Download directly from [here](https://www2.census.gov/geo/tiger/TIGER2022/TRACT/) and drag all data into ```\alignment_data\census_tracts```
 
-#### Census Tract Level Population Data
+##### Census Tract Level Population Data
 
 Download directly from [here](https://data.census.gov/cedsci/table?t=Population%20Total&g=0100000US%241400000&tid=ACSDT5Y2020.B01003) and drag all data from the zip into ```\alignment_data\census_tracts```
 
