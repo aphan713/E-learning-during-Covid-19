@@ -12,6 +12,10 @@ Download directly from [here](https://www.kaggle.com/competitions/learnplatform-
 
 Download directly from [here](https://github.com/BroadbandNow/Open-Data) and drop the .csv in ```\raw_data\BroadbandNow```
 
+##### Test Scores (Nation's Report Card)
+
+Already downloaded from [here](https://www.nationsreportcard.gov/) and parsed/reformatted, can be found in ```\raw_data\NationsReportCard```
+
 ### Adding New Data Sources
 
 See ```Data Preprocessing.ipynb```. The BroadbandNow dataset is provided as an example - new datasets should be similar, assuming they are indexed at either the state or ZIP code level. If not, new geographic crosswalk weights will have to be defined.

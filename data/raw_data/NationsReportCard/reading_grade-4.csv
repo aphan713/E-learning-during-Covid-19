@@ -1,0 +1,54 @@
+Jurisdiction,All students,avg_scale_score_2022,std_dev_2022,avg_scale_score_2019,std_dev_2019,STATEFP
+National,All students,217,40,220,39,-1
+Alabama,All students,213,39,212,40,1
+Alaska,All students,204,45,204,47,2
+Arizona,All students,215,40,216,39,4
+Arkansas,All students,212,43,215,41,5
+California,All students,214,42,216,41,6
+Colorado,All students,223,39,225,38,8
+Connecticut,All students,219,40,224,39,9
+Delaware,All students,208,41,218,40,10
+District of Columbia,All students,207,47,214,42,11
+Department of Defense Education Activity,All students,235,34,235,30,-1
+Florida,All students,225,36,225,35,12
+Georgia,All students,216,41,218,40,13
+Hawaii,All students,219,41,218,40,15
+Idaho,All students,215,42,223,38,16
+Illinois,All students,218,41,218,40,17
+Indiana,All students,217,40,222,39,18
+Iowa,All students,218,38,221,38,19
+Kansas,All students,215,40,219,38,20
+Kentucky,All students,217,38,221,38,21
+Louisiana,All students,212,41,210,40,22
+Maine,All students,213,41,221,38,23
+Maryland,All students,212,44,220,41,24
+Massachusetts,All students,227,40,231,36,25
+Michigan,All students,212,41,218,37,26
+Minnesota,All students,215,40,222,39,27
+Mississippi,All students,217,37,219,34,28
+Missouri,All students,213,41,218,40,29
+Montana,All students,219,38,222,37,30
+Nebraska,All students,219,40,222,37,31
+Nevada,All students,212,40,218,37,32
+New Hampshire,All students,223,38,224,37,33
+New Jersey,All students,223,39,227,37,34
+New Mexico,All students,202,43,208,40,35
+New York,All students,214,42,220,38,36
+North Carolina,All students,216,41,221,38,37
+North Dakota,All students,218,36,221,35,38
+Ohio,All students,219,41,222,37,39
+Oklahoma,All students,208,39,216,35,40
+Oregon,All students,210,43,218,42,41
+Pennsylvania,All students,219,40,223,40,42
+Rhode Island,All students,217,41,220,40,44
+South Carolina,All students,216,40,216,41,45
+South Dakota,All students,218,38,222,37,46
+Tennessee,All students,214,40,219,39,47
+Texas,All students,214,39,216,37,48
+Utah,All students,221,39,225,37,49
+Vermont,All students,217,42,222,39,50
+Virginia,All students,214,43,224,37,51
+Washington,All students,217,42,220,40,53
+West Virginia,All students,205,42,213,42,54
+Wisconsin,All students,217,40,220,40,55
+Wyoming,All students,225,36,227,35,56

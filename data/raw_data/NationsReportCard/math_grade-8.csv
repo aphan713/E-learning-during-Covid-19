@@ -1,0 +1,55 @@
+Jurisdiction,All students,avg_scale_score_2022,std_dev_2022,avg_scale_score_2019,std_dev_2019,STATEFP
+National,All students,274,39,282,40,-1
+Alabama,All students,264,38,269,37,1
+Alaska,All students,270,39,274,42,2
+Arizona,All students,271,39,280,39,4
+Arkansas,All students,267,35,274,39,5
+California,All students,270,42,276,42,6
+Colorado,All students,275,40,285,40,8
+Connecticut,All students,276,41,286,42,9
+Delaware,All students,264,37,277,39,10
+District of Columbia,All students,260,40,269,42,11
+Department of Defense Education Activity,All students,292,32,292,32,-1
+Florida,All students,271,37,279,40,12
+Georgia,All students,271,39,279,39,13
+Hawaii,All students,270,38,275,38,15
+Idaho,All students,282,36,286,37,16
+Illinois,All students,275,39,283,40,17
+Indiana,All students,279,38,286,38,18
+Iowa,All students,277,36,282,36,19
+Kansas,All students,272,36,282,38,20
+Kentucky,All students,269,37,278,37,21
+Louisiana,All students,266,37,272,37,22
+Maine,All students,273,38,282,38,23
+Maryland,All students,269,43,280,43,24
+Massachusetts,All students,284,40,294,42,25
+Michigan,All students,273,38,280,38,26
+Minnesota,All students,280,38,291,40,27
+Mississippi,All students,266,36,274,36,28
+Missouri,All students,272,37,281,37,29
+Montana,All students,277,36,284,38,30
+Nebraska,All students,279,38,285,37,31
+Nevada,All students,269,37,274,39,32
+New Hampshire,All students,279,37,287,36,33
+New Jersey,All students,281,41,292,44,34
+New Mexico,All students,259,35,269,37,35
+New York,All students,274,42,280,42,36
+North Carolina,All students,274,37,284,41,37
+North Dakota,All students,278,34,286,36,38
+Ohio,All students,276,39,286,39,39
+Oklahoma,All students,264,35,276,35,40
+Oregon,All students,270,37,280,40,41
+Pennsylvania,All students,274,39,285,42,42
+Puerto Rico,All students,216,29,222,30,72
+Rhode Island,All students,270,39,276,41,44
+South Carolina,All students,269,38,276,40,45
+South Dakota,All students,281,35,287,38,46
+Tennessee,All students,272,38,280,38,47
+Texas,All students,273,37,280,36,48
+Utah,All students,282,37,285,39,49
+Vermont,All students,276,36,287,38,50
+Virginia,All students,279,40,287,38,51
+Washington,All students,276,39,286,42,53
+West Virginia,All students,260,37,272,37,54
+Wisconsin,All students,281,38,289,39,55
+Wyoming,All students,281,35,286,35,56
