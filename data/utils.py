@@ -1,4 +1,4 @@
-VALID_SOURCE_GEOGRAPHIC_RESOLUTIONS = ['state', 'zipcode']
+VALID_SOURCE_GEOGRAPHIC_RESOLUTIONS = ['state', 'zipcode', 'locale']
 VALID_TARGET_GEOGRAPHIC_RESOLUTIONS = ['district', 'state']
 
 

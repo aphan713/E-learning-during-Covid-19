@@ -16,6 +16,15 @@ Download directly from [here](https://github.com/BroadbandNow/Open-Data) and dro
 
 Already downloaded from [here](https://www.nationsreportcard.gov/) and parsed/reformatted, can be found in ```\raw_data\NationsReportCard```
 
+##### SAT Scores (Compiled by Anh)
+
+Already downloaded from
+
+- SAT (2019 and 2020): https://ipsr.ku.edu/ksdata/ksah/education/6ed16.pdf
+- SAT (2022): https://blog.prepscholar.com/average-sat-scores-by-state-most-recent
+
+and parsed/reformatted, can be found in ```\raw_data\SATScores```
+
 ### Adding New Data Sources
 
 See ```Data Preprocessing.ipynb```. The BroadbandNow dataset is provided as an example - new datasets should be similar, assuming they are indexed at either the state or ZIP code level. If not, new geographic crosswalk weights will have to be defined.

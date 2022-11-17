@@ -1,54 +1,213 @@
-Jurisdiction,All students,avg_scale_score_2022,std_dev_2022,avg_scale_score_2019,std_dev_2019,STATEFP
-National,All students,260,38,263,38,-1
-Alabama,All students,251,38,253,38,1
-Alaska,All students,253,42,252,38,2
-Arizona,All students,259,37,259,36,4
-Arkansas,All students,255,37,259,39,5
-California,All students,259,39,259,39,6
-Colorado,All students,263,39,267,37,8
-Connecticut,All students,264,38,270,37,9
-Delaware,All students,253,38,260,40,10
-District of Columbia,All students,250,41,250,43,11
-Department of Defense Education Activity,All students,282,29,280,28,-1
-Florida,All students,260,37,263,38,12
-Georgia,All students,260,40,262,36,13
-Hawaii,All students,259,39,258,39,15
-Idaho,All students,264,35,266,36,16
-Illinois,All students,262,39,265,38,17
-Indiana,All students,261,37,266,37,18
-Iowa,All students,260,35,262,36,19
-Kansas,All students,256,36,263,35,20
-Kentucky,All students,258,38,263,38,21
-Louisiana,All students,257,38,257,37,22
-Maine,All students,257,41,265,37,23
-Maryland,All students,259,43,264,40,24
-Massachusetts,All students,269,37,273,37,25
-Michigan,All students,259,37,263,35,26
-Minnesota,All students,260,36,264,37,27
-Mississippi,All students,253,36,256,36,28
-Missouri,All students,258,38,263,36,29
-Montana,All students,261,34,265,35,30
-Nebraska,All students,259,37,264,35,31
-Nevada,All students,259,38,258,38,32
-New Hampshire,All students,263,36,268,35,33
-New Jersey,All students,270,39,270,42,34
-New Mexico,All students,248,36,252,39,35
-New York,All students,262,39,262,39,36
-North Carolina,All students,256,37,263,38,37
-North Dakota,All students,258,36,263,33,38
-Ohio,All students,262,39,267,37,39
-Oklahoma,All students,251,37,258,34,40
-Oregon,All students,257,37,264,38,41
-Pennsylvania,All students,259,40,264,38,42
-Rhode Island,All students,259,41,262,41,44
-South Carolina,All students,254,39,259,37,45
-South Dakota,All students,262,36,263,36,46
-Tennessee,All students,258,38,262,36,47
-Texas,All students,255,35,256,36,48
-Utah,All students,265,37,267,36,49
-Vermont,All students,264,37,268,37,50
-Virginia,All students,260,39,262,39,51
-Washington,All students,262,38,266,40,53
-West Virginia,All students,249,40,256,37,54
-Wisconsin,All students,262,37,267,37,55
-Wyoming,All students,261,36,265,34,56
+Jurisdiction,locale,avg_scale_score_2022,std_dev_2022,avg_scale_score_2019,std_dev_2019
+National,City,257,39,259,40
+National,Suburb,264,38,267,37
+National,Town,256,37,259,36
+National,Rural,260,36,264,36
+Alabama,City,245,40,253,40
+Alabama,Suburb,261,38,259,37
+Alabama,Town,247,37,248,36
+Alabama,Rural,250,36,252,37
+Alaska,City,‡,‡,‡,‡
+Alaska,Suburb,‡,‡,‡,‡
+Alaska,Town,‡,‡,‡,‡
+Alaska,Rural,‡,‡,‡,‡
+Arizona,City,257,37,256,38
+Arizona,Suburb,266,36,266,33
+Arizona,Town,251,34,256,34
+Arizona,Rural,256,36,257,37
+Arkansas,City,256,38,264,42
+Arkansas,Suburb,251,36,261,38
+Arkansas,Town,253,39,255,38
+Arkansas,Rural,257,36,256,37
+California,City,261,39,259,41
+California,Suburb,259,38,261,37
+California,Town,248,37,248,39
+California,Rural,‡,‡,‡,‡
+Colorado,City,260,41,264,39
+Colorado,Suburb,267,37,270,36
+Colorado,Town,258,37,259,40
+Colorado,Rural,267,36,272,31
+Connecticut,City,246,38,256,39
+Connecticut,Suburb,270,36,274,36
+Connecticut,Town,‡,‡,‡,‡
+Connecticut,Rural,270,38,279,32
+Delaware,City,250,39,258,39
+Delaware,Suburb,251,39,257,41
+Delaware,Town,255,38,262,39
+Delaware,Rural,256,38,264,38
+District of Columbia,City,250,41,250,43
+District of Columbia,Suburb,‡,‡,‡,‡
+District of Columbia,Town,‡,‡,‡,‡
+District of Columbia,Rural,‡,‡,‡,‡
+DoDEA,City,‡,‡,‡,‡
+DoDEA,Suburb,‡,‡,‡,‡
+DoDEA,Town,‡,‡,‡,‡
+DoDEA,Rural,‡,‡,‡,‡
+Florida,City,258,37,263,41
+Florida,Suburb,261,37,263,38
+Florida,Town,‡,‡,259,35
+Florida,Rural,258,34,267,34
+Georgia,City,254,42,258,38
+Georgia,Suburb,262,41,264,36
+Georgia,Town,257,39,256,35
+Georgia,Rural,260,37,264,35
+Hawaii,City,263,39,264,38
+Hawaii,Suburb,263,38,261,38
+Hawaii,Town,253,39,252,39
+Hawaii,Rural,249,38,248,42
+Idaho,City,265,35,269,36
+Idaho,Suburb,265,38,270,35
+Idaho,Town,261,34,262,35
+Idaho,Rural,263,33,265,38
+Illinois,City,249,39,258,40
+Illinois,Suburb,268,38,267,38
+Illinois,Town,255,34,263,39
+Illinois,Rural,269,34,270,34
+Indiana,City,253,39,255,40
+Indiana,Suburb,266,36,274,34
+Indiana,Town,259,36,263,37
+Indiana,Rural,262,36,270,34
+Iowa,City,252,38,256,39
+Iowa,Suburb,265,34,275,34
+Iowa,Town,257,37,257,35
+Iowa,Rural,264,33,265,34
+Kansas,City,253,39,257,39
+Kansas,Suburb,263,35,274,32
+Kansas,Town,253,36,261,33
+Kansas,Rural,258,34,263,34
+Kentucky,City,259,40,261,40
+Kentucky,Suburb,253,40,266,37
+Kentucky,Town,261,37,263,37
+Kentucky,Rural,259,37,263,38
+Louisiana,City,254,38,256,38
+Louisiana,Suburb,258,36,261,36
+Louisiana,Town,254,35,248,35
+Louisiana,Rural,258,40,260,37
+Maine,City,251,45,264,40
+Maine,Suburb,267,35,272,37
+Maine,Town,251,45,259,39
+Maine,Rural,257,40,265,36
+Maryland,City,260,45,255,44
+Maryland,Suburb,258,42,265,39
+Maryland,Town,‡,‡,266,38
+Maryland,Rural,269,39,275,35
+Massachusetts,City,258,40,263,40
+Massachusetts,Suburb,271,36,275,36
+Massachusetts,Town,‡,‡,‡,‡
+Massachusetts,Rural,‡,‡,‡,‡
+Michigan,City,249,37,251,37
+Michigan,Suburb,261,38,265,34
+Michigan,Town,260,34,266,32
+Michigan,Rural,262,36,266,34
+Minnesota,City,255,45,256,41
+Minnesota,Suburb,265,34,268,37
+Minnesota,Town,259,32,265,35
+Minnesota,Rural,259,33,262,34
+Mississippi,City,241,32,255,35
+Mississippi,Suburb,262,34,264,35
+Mississippi,Town,247,35,250,35
+Mississippi,Rural,255,36,258,35
+Missouri,City,251,40,260,39
+Missouri,Suburb,262,40,267,38
+Missouri,Town,257,33,265,34
+Missouri,Rural,256,37,260,34
+Montana,City,263,35,265,36
+Montana,Suburb,‡,‡,‡,‡
+Montana,Town,260,33,262,36
+Montana,Rural,261,36,268,35
+Nebraska,City,256,40,261,38
+Nebraska,Suburb,251,36,268,34
+Nebraska,Town,261,36,263,33
+Nebraska,Rural,264,32,266,33
+Nevada,City,259,40,260,37
+Nevada,Suburb,257,37,256,39
+Nevada,Town,259,28,257,39
+Nevada,Rural,267,35,259,35
+New Hampshire,City,254,38,253,37
+New Hampshire,Suburb,264,35,271,35
+New Hampshire,Town,258,35,270,35
+New Hampshire,Rural,267,36,270,34
+New Jersey,City,246,41,253,41
+New Jersey,Suburb,272,37,272,42
+New Jersey,Town,‡,‡,‡,‡
+New Jersey,Rural,‡,‡,291,32
+New Mexico,City,251,38,252,41
+New Mexico,Suburb,251,36,255,38
+New Mexico,Town,246,35,252,37
+New Mexico,Rural,244,36,248,39
+New York,City,256,39,253,40
+New York,Suburb,266,39,271,36
+New York,Town,263,33,262,36
+New York,Rural,270,37,263,36
+North Carolina,City,257,39,263,41
+North Carolina,Suburb,259,37,268,38
+North Carolina,Town,‡,‡,253,39
+North Carolina,Rural,255,35,261,35
+North Dakota,City,259,37,263,35
+North Dakota,Suburb,258,34,265,34
+North Dakota,Town,258,36,261,32
+North Dakota,Rural,257,35,264,31
+Ohio,City,241,38,243,38
+Ohio,Suburb,268,38,272,37
+Ohio,Town,257,38,265,35
+Ohio,Rural,267,36,274,33
+Oklahoma,City,250,39,258,38
+Oklahoma,Suburb,255,34,260,33
+Oklahoma,Town,245,38,256,33
+Oklahoma,Rural,254,35,259,31
+Oregon,City,258,37,266,38
+Oregon,Suburb,261,37,266,40
+Oregon,Town,253,37,257,36
+Oregon,Rural,255,35,265,37
+Pennsylvania,City,244,41,245,39
+Pennsylvania,Suburb,265,39,272,37
+Pennsylvania,Town,251,38,262,32
+Pennsylvania,Rural,266,36,263,37
+Rhode Island,City,243,42,244,45
+Rhode Island,Suburb,263,40,266,38
+Rhode Island,Town,‡,‡,‡,‡
+Rhode Island,Rural,276,34,278,34
+South Carolina,City,252,41,258,37
+South Carolina,Suburb,259,40,265,38
+South Carolina,Town,248,38,253,36
+South Carolina,Rural,251,37,255,37
+South Dakota,City,258,39,264,37
+South Dakota,Suburb,‡,‡,‡,‡
+South Dakota,Town,265,34,266,34
+South Dakota,Rural,261,36,259,36
+Tennessee,City,245,42,255,39
+Tennessee,Suburb,264,34,274,35
+Tennessee,Town,256,36,258,33
+Tennessee,Rural,264,36,264,34
+Texas,City,254,35,250,38
+Texas,Suburb,260,35,262,36
+Texas,Town,252,33,253,35
+Texas,Rural,252,33,258,33
+Utah,City,258,39,267,40
+Utah,Suburb,266,37,269,36
+Utah,Town,264,32,264,35
+Utah,Rural,269,35,265,34
+Vermont,City,‡,‡,‡,‡
+Vermont,Suburb,‡,‡,‡,‡
+Vermont,Town,‡,‡,‡,‡
+Vermont,Rural,‡,‡,‡,‡
+Virginia,City,256,39,258,39
+Virginia,Suburb,263,39,263,40
+Virginia,Town,250,37,259,38
+Virginia,Rural,258,38,263,37
+Washington,City,264,40,266,43
+Washington,Suburb,263,36,270,40
+Washington,Town,253,39,255,36
+Washington,Rural,257,37,263,38
+West Virginia,City,252,41,259,37
+West Virginia,Suburb,249,41,261,37
+West Virginia,Town,251,40,250,38
+West Virginia,Rural,247,39,255,36
+Wisconsin,City,251,38,256,39
+Wisconsin,Suburb,269,37,276,35
+Wisconsin,Town,268,33,269,34
+Wisconsin,Rural,262,34,271,34
+Wyoming,City,256,37,260,37
+Wyoming,Suburb,‡,‡,‡,‡
+Wyoming,Town,262,35,266,33
+Wyoming,Rural,263,35,267,34
