@@ -1,6 +1,10 @@
 from sklearn import preprocessing
 from sklearn.model_selection import cross_validate, GroupKFold
 from sklearn.pipeline import make_pipeline
+try:
+    import torch
+except ImportError:
+    print('pytorch not installed - neural network models will not be available')
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
@@ -11,6 +15,7 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 
+from datetime import datetime, timedelta
 from functools import partial
 from pathlib import Path
 import random
@@ -52,13 +57,34 @@ TARGET_FEATURES = ['testscores;math_4_2022',
                    #'testscores;sat_total_2020'
                   ]
 
-
-def load_dataset():
+ALL_DAYS = []
+d = datetime(2020, 1, 1)
+while d.year != 2021:
+    ALL_DAYS.append(d.strftime('%Y-%m-%d'))
+    d += timedelta(days=1)
+    
+def load_dataset(temporal=False):
     dataset = None
-
+    
     ## Load state dataframes
     for state_data_path in tqdm(PROCESSED_DATA_DIR_PATH.glob('*.gz'), total=23):
         df = pd.read_pickle(state_data_path)
+
+        df = df.drop(['districts;county_connections_ratio'], axis=1)
+
+        ### Remap categorical anonymized range data into numeric values
+        def remap_ranges(x, bins_dict):
+            if pd.isna(x):
+                return None
+            else:
+                return bins_dict[float(x.split(',')[0][1:])]
+
+        bins_dict = {float(n): i for i, n in enumerate(range(4000, 34000, 2000))}
+        df['districts;pp_total_raw'] = df['districts;pp_total_raw'].apply(partial(remap_ranges, bins_dict=bins_dict))
+
+        bins_dict = {float(n) / 100: i for i, n in enumerate(range(0, 100, 20))}
+        df['districts;pct_black/hispanic'] = df['districts;pct_black/hispanic'].apply(partial(remap_ranges, bins_dict=bins_dict))
+        df['districts;pct_free/reduced'] = df['districts;pct_free/reduced'].apply(partial(remap_ranges, bins_dict=bins_dict))
 
         df_temp = df.groupby(['time', 'district_id']).first()
 
@@ -71,48 +97,55 @@ def load_dataset():
         df = df_temp
         del df_temp
 
-        for district_id in df.index.levels[1]:
-            df_temp = df.loc[(slice(None), district_id), :]
-            row = df_temp.iloc[0][INPUT_FEATURES + TARGET_FEATURES]
-            row.loc[columns_to_average] = df_temp[columns_to_average].mean()
-            row['n_days'] = len(df_temp)
+        if temporal:
+            state_fill = dict(df.groupby(['district_id']).first()['districts;state'])
+            district_fill = dict(df.groupby(['district_id']).first()['districts;locale'])
+
+            ## Fill in empty days with linear interpolation of existing values
+            new_index = pd.MultiIndex.from_product([ALL_DAYS, df.index.levels[1]])
+            df = df.reindex(new_index)
+
+            for district_id in df.index.levels[1]:
+                df_temp = df.loc[(slice(None), district_id), :].interpolate()
+                df_temp['districts;state'] = state_fill[district_id]
+                df_temp['districts;locale'] = district_fill[district_id]
+                df.loc[(slice(None), district_id), :] = df_temp
+
             if dataset is None:
-                dataset = pd.DataFrame(row).T.reset_index(level=0)
+                dataset = df.swaplevel()
             else:
-                dataset = pd.concat([dataset, pd.DataFrame(row).T.reset_index(level=0)])
+                dataset = pd.concat([dataset, df.swaplevel()]).sort_index(level='district_id')
+        else:
+            for district_id in df.index.levels[1]:
+                df_temp = df.loc[(slice(None), district_id), :]
+                row = df_temp.iloc[0][INPUT_FEATURES + TARGET_FEATURES]
+                row.loc[columns_to_average] = df_temp[columns_to_average].mean()
+                row['n_days'] = len(df_temp)
+                if dataset is None:
+                    dataset = pd.DataFrame(row).T.reset_index(level=0)
+                else:
+                    dataset = pd.concat([dataset, pd.DataFrame(row).T.reset_index(level=0)])
+
+    if not temporal:
+        dataset = dataset.drop(['level_0'], axis=1)
+
+        ## Load averaged engagement data
+        df = pd.read_csv(PROCESSED_DATA_DIR_PATH / 'LearnPlatform_engage_district_wide.csv')
+        df = df.drop(['state'], axis=1)
+        df = df.set_index(['district_id'])
+        df = df.rename(lambda col_name: 'engagement;{}'.format(col_name), axis=1)
+        dataset = dataset.join(df)
 
     for l in ['City', 'Suburb', 'Rural', 'Town']:
         dataset['districts;locale_{}'.format(l.lower())] = dataset['districts;locale'].apply(lambda x: int(x == l))
-
-    dataset = dataset.drop(['level_0'], axis=1)
-    
-    ## Load averaged engagement data
-    df = pd.read_csv(PROCESSED_DATA_DIR_PATH / 'LearnPlatform_engage_district_wide.csv')
-    df = df.drop(['state'], axis=1)
-    df = df.set_index(['district_id'])
-    df = df.rename(lambda col_name: 'engagement;{}'.format(col_name), axis=1)
-    dataset = dataset.join(df)
-    
-    ## Remap categorical anonymized range data into numeric values
-    def remap_ranges(x, bins_dict):
-        if pd.isna(x):
-            return None
-        else:
-            return bins_dict[float(x.split(',')[0][1:])]
-        
-    bins_dict = {float(n): i for i, n in enumerate(range(4000, 34000, 2000))}
-    dataset['districts;pp_total_raw'] = dataset['districts;pp_total_raw'].apply(partial(remap_ranges, bins_dict=bins_dict))
-
-    bins_dict = {float(n) / 100: i for i, n in enumerate(range(0, 100, 20))}
-    dataset['districts;pct_black/hispanic'] = dataset['districts;pct_black/hispanic'].apply(partial(remap_ranges, bins_dict=bins_dict))
-    dataset['districts;pct_free/reduced'] = dataset['districts;pct_free/reduced'].apply(partial(remap_ranges, bins_dict=bins_dict))
     
     return dataset
 
 
 def run_experiment(dataset, input_features_list, output_targets_list, 
                    model_type, n_splits=5,
-                   scoring_metrics_list=None):
+                   scoring_metrics_list=None,
+                   temporal=False):
     
     if scoring_metrics_list is None:
         scoring_metrics_list = ['r2', 'neg_root_mean_squared_error']
@@ -126,23 +159,41 @@ def run_experiment(dataset, input_features_list, output_targets_list,
     ## and locale type is in either the test or train split - so "California Suburb" can be in the
     ## training split and "California City" can be in the test split, but all "California Suburb"
     ## districts would be in the training split)
-    k_fold_groups = pd.factorize(list(zip(list(dataset['districts;state']), list(dataset['districts;locale']))))[0]
+    if temporal:
+        temp_dataset = dataset.groupby(['district_id']).first()
+        k_fold_groups = pd.factorize(list(zip(list(temp_dataset['districts;state']), list(temp_dataset['districts;locale']))))[0]
+    else:
+        k_fold_groups = pd.factorize(list(zip(list(dataset['districts;state']), list(dataset['districts;locale']))))[0]
 
     results = []
     for target in output_targets_list:
 
         X = np.array(dataset[input_features_list]).astype(float)
         Y = np.array(dataset[[target]]).astype(float).squeeze(-1)
+        if temporal:
+            X = X.reshape((-1, len(ALL_DAYS), len(input_features_list)))
+            Y = Y[list(range(0, len(Y), len(ALL_DAYS)))]
 
-        mask = np.logical_and(~np.isnan(Y), ~np.any(np.isnan(X), axis=-1))
+        if temporal:
+            mask = np.logical_and(~np.isnan(Y), ~np.any(np.any(np.isnan(X), axis=-1), axis=-1))
+        else:
+            mask = np.logical_and(~np.isnan(Y), ~np.any(np.isnan(X), axis=-1))
         X = X[mask]
         Y = Y[mask]
         groups = k_fold_groups[mask]
-        
+
         print('Dataset for {} has {} samples after filtering'.format(target, np.sum(mask)))
 
-        model = make_pipeline(preprocessing.StandardScaler(), 
-                              model_type)
+        if temporal:
+            for i in range(X.shape[2]):
+                scaler = preprocessing.StandardScaler()
+                X[:, :, i] = scaler.fit_transform(X[:, :, i])
+            X = torch.tensor(X).float()
+            Y = torch.tensor(Y.reshape(-1, 1)).float()
+            model = model_type
+        else:
+            model = make_pipeline(preprocessing.StandardScaler(), 
+                                  model_type)
 
         kf_splits = GroupKFold(n_splits=n_splits)
         results_dict = cross_validate(model, X, Y, 
@@ -150,9 +201,10 @@ def run_experiment(dataset, input_features_list, output_targets_list,
                                       groups=groups,
                                       scoring=scoring_metrics_list,
                                       return_train_score=True,
-                                      return_estimator=True)
+                                      return_estimator=True,
+                                      error_score='raise')
         results.append((results_dict, target, scoring_metrics_list, (kf_splits, groups), X, Y))
-        
+
     return results
 
 
